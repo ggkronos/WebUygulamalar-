@@ -1,0 +1,70 @@
+﻿@using StartedWeb.Models;
+@model List<Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2 class="alert-info">Product List</h2>
+<hr />
+
+<div class="alert alert-success" role="alert">
+    @ViewBag.productCount avaible products listed.
+</div>
+
+<div class="row">
+
+    <div class="col-md-3">
+        
+        <div class="list-group">
+            
+            @*ViewBag liste tipini genel bir tipe dönüştürüyor bu sebeple foreach onun liste olduğunu bilmiyor 
+            bizde o yüzden tekrar tip dönüşümü yapıyoruz.*@
+
+            @foreach (var category in (List<Category>)ViewBag.categoriesView)
+            {
+                <a href="#" class="list-group-item">@category.CategoryName</a>
+            }
+
+        </div>
+
+    </div>
+
+    <div class="col-md-9">
+
+        @foreach (var product in Model)
+        {
+            if (product.IsSale == true)
+            {
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="https://via.placeholder.com/350x150" alt="Alternate Text" />
+                        <div class="caption">
+                            <h3>@product.ProductName</h3>
+                            <p>@product.ProductInfo</p>
+                            <p>
+                                <a href="#" class="btn btn-primary" role="button">Add Chart</a> <a href="#" class="btn btn-default" role="button">Button</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+
+        }
+
+
+
+
+    </div>
+
+
+    
+
+
+
+</div>        
+
+
+
+
